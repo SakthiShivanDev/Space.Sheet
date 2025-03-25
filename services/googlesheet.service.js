@@ -10,7 +10,7 @@ export class SpreadsheetService {
     this.serviceAccountAuth = new JWT({
       email:email?? process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       key:checkValueExist(key)?private_key.replace(/\\n/g, "\n"):key.replace(/\\n/g, "\n"),
-      scopes: [process.env.GOOGLE_SHEET_SCOPE],
+      scopes: [process.env.GOOGLE_SHEET_SCOPE??"https://www.googleapis.com/auth/spreadsheets"],
     });
     this.sheetId = sheetId;
     this.doc = new GoogleSpreadsheet(
