@@ -169,4 +169,22 @@ export class SpreadsheetService {
       };
     }
   }
+  async getSheetTitles() {
+    try {
+      await this.doc.loadInfo();
+      const count =this.doc.sheetCount
+      const data=[]
+      for (let i=0;i<count;i++){
+        const sheet=this.doc.sheetsByIndex[i]
+        data.push({title:sheet.title,index:i})
+      }
+
+      return { success: true, data};
+    } catch (err) {
+      return {
+        success: false,
+        message: err.response?.data ?? err.message ?? err,
+      };
+    }
+  }
 }
