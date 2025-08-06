@@ -1,6 +1,6 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
-import dotenv from "dotenv";
+import dotenv from "@dotenvx/dotenvx";
 import { checkValueExist } from "../utils/common.utils.js";
 dotenv.config();
 const private_key = `${process.env.GOOGLE_PRIVATE_KEY}`;
